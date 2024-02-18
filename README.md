@@ -1,5 +1,5 @@
 1  https://paperswithcode.com/paper/model-based-reinforcement-learning-with-3
-Model-Based Reinforcement Learning with Isolated Imaginations
+Model-Based Reinforcement Learning
 
 2 Nav-Q: Quantum Deep Reinforcement Learning for Collision-Free Navigation of Self-Driving Cars
 

@@ -1,0 +1,32 @@
+Hi Satyam, 
+
+Thanks for your patience. All machines are currently occupied with research for an upcoming deadline, so the official checkpoint will likely be released at the end of this month. Overall, I think the evaluation results you provided in your previous email are normal except that the vehicle may get stuck on some routes. Could you provide the settings for these 15 routes? (i.e., the vehicle numbers and the pedestrian numbers, the training/testing town).
+
+The vehicle-block failure can occur if the policy is not well-trained or has weak generalization ability. It often happens when the ego-vehicle is blocked by another vehicle and cannot recover from that block even if the other vehicles drive away. To train the policy better, I need you to visualize the CARLA server and determine the reason. I  also recommend averaging the output of several recent checkpoints to get a robust policy. For example, you can average the brake value from these checkpoints with the following code: 
+
+steer = 0
+throttle = 0
+brake = 0
+action_len = len(action_list)
+for action in action_list:
+    steer += STEER_CONTROL[action[0].item()]
+    _throttle, _brake = THROTTLE_CONTROL[action[1].item()]
+    throttle += _throttle
+    brake += _brake
+steer /= action_len
+throttle /= action_len
+if action_len > 1:
+    if brake < action_len / 2.0:
+        brake = 0.0
+    else:
+        brake /= action_len
+
+
+Since we use a stochastic policy to predict the brake value, it's possible to occasionally sample a value that causes the vehicle to brake easily. This is a drawback of using a stochastic policy instead of a deterministic one.
+
+Feel free to contact me t if you have any questions. I reorganize the project to provide a neat API for others to use. I’ll start to reproduce the official checkpoint as long as I’m free from my paper deadline.
+
+Best,
+Yinuo.
+
+Satyam Singh <i.satvns@gmail.com> 于2024年2月19日周一 01:46写道：

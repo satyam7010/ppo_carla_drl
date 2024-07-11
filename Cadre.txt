@@ -27,6 +27,4 @@ Since we use a stochastic policy to predict the brake value, it's possible to oc
 Feel free to contact me t if you have any questions. I reorganize the project to provide a neat API for others to use. I’ll start to reproduce the official checkpoint as long as I’m free from my paper deadline.
 
 Best,
-Yinuo.
-
-Satyam Singh <i.satvns@gmail.com> 于2024年2月19日周一 01:46写道：
+Yinuo
